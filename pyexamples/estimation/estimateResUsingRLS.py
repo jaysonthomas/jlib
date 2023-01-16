@@ -28,19 +28,19 @@ V_line = x_ls[0]*I_line + x_ls[1]
 
 ## Recursive solution
 
-#Initialize the 2x2 covaraince matrix
+#Initialize the 2x2 covaraince matrix (i.e. P_0). Off-diangonal elements should be zero.
 # P_k = ...
 P_k = np.array([[9, 0], 
                 [0, 0.1]])
 
-#Initialize the parameter estimate x
+# Initialize the 2x1 parameter vector x (i.e., x_0).
 # x_k = ...
 x_k = np.array([4.0, 0.0])
 
-#Our measurement variance
-Var = 0.0225
+# Our voltage measurement variance (denoted by R, don't confuse with resistance).
+R_k = 0.0225
 
-#Pre allocate our solutions so we can save the estimate at every step
+# Pre allocate space to save our estimates at every step.
 num_meas = I.shape[0]
 x_hist = np.zeros((num_meas + 1,2))
 P_hist = np.zeros((num_meas + 1,2,2))
@@ -54,7 +54,7 @@ for k in range(num_meas):
     H_k = np.array([[I[k], 1.0]])
   
     #Construct K_k
-    K_k = np.dot(P_k , np.dot(H_k.transpose() , inv(np.dot(H_k,np.dot(P_k,H_k.transpose())) + Var)))
+    K_k = np.dot(P_k , np.dot(H_k.transpose() , inv(np.dot(H_k,np.dot(P_k,H_k.transpose())) + R_k)))
                     
     #Update our estimate
     x_k = x_k + np.dot(K_k,(V[k]-np.dot(H_k,x_k)))
