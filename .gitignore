@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# Bazel build artifacts (symlinks)
+bazel-*
