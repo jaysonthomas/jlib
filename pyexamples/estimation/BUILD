@@ -7,3 +7,8 @@ py_binary (
   name = "estimateResUsingRLS",
   srcs = ["estimateResUsingRLS.py"],
 )
+
+py_binary (
+  name = "2dGaussianPlay",
+  srcs = ["2dGaussianPlay.py"],
+)

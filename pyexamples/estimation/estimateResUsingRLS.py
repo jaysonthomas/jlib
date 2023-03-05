@@ -12,8 +12,7 @@ H[:, 0] = I
 # (2x5)(5x2) (2x5)(5x1) = (2x1)
 # Here, it's not a numpy array, so there's just 2 elements.
 x_ls = inv(H.T.dot(H)).dot(H.T.dot(V))
-print(f'The slope and offset parameters of the best-fit line are [R, b]:\
-{x_ls}')
+print(f'The slope and offset parameters of the best-fit line are [R, b]: {x_ls}')
 
 #Plot
 I_line = np.arange(0, 0.8, 0.1)
