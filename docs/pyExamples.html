@@ -53,32 +53,22 @@
 
   <div id="mySidenav" class="sidebar">
   
-<a href="#0">Table of Contents</a>
-<a href="#1">Estimation</a>
+<a href="#0">Estimation</a>
 <ul class="no-bullets">
-  <li><a href="#1.0">estimateResistanceUsingLS</a></li>
-  <li><a href="#1.1">estimateResUsingRLS</a></li>
-  <li><a href="#1.2">$y$ and $H$</a></li>
+  <li><a href="#0.0">estimateResistanceUsingLS</a></li>
+  <li><a href="#0.1">estimateResUsingRLS</a></li>
+  <li><a href="#0.2">$y$ and $H$</a></li>
 </ul>
-<a href="#2">Musings</a>
+<a href="#1">Musings</a>
 <ul class="no-bullets">
-  <li><a href="#2.0">estimateResUsingRLS</a></li>
+  <li><a href="#1.0">estimateResUsingRLS</a></li>
 </ul>
 </div>
 
 <chapter style="counter-reset: chapter 0"><h1>Jlib python examples</h1>
 
-<section id="0"><h1>Table of Contents</h1>
-  <ul>
-    <li><a href="#1">Estimation</a></li>
-    <ul>
-      <li><a href="#1_1">estimateResistanceUsingLS</a></li>
-    </ul>
-  </ul>
-</section>
-
-<section id="1"><h1>Estimation</h1>
-  <subsection id="1.0"><h1>estimateResistanceUsingLS</h1>
+<section id="0"><h1>Estimation</h1>
+  <subsection id="0.0"><h1>estimateResistanceUsingLS</h1>
     Find the best estimate for the resistance $R$, given the relationship 
     $V=IR$. This is an example of batch LS, where all the measurements are
     processed at once.
@@ -105,7 +95,7 @@
     </p>
   </subsection>
 
-  <subsection id="1.1"><h1>estimateResUsingRLS</h1>
+  <subsection id="0.1"><h1>estimateResUsingRLS</h1>
     Using RLS, we fit a linear model that includes an offset term:
     $$
       y = Hx + b
@@ -144,7 +134,7 @@
       a standard deviation of $3\Omega$ (i.e., a variance of $9\Omega^{2}$).
     </subsubsection>
 
-  <subsection id="1.2"><h1>$y$ and $H$</h1>
+  <subsection id="0.2"><h1>$y$ and $H$</h1>
       We assume that current values are known exactly, and that the 
       voltage measurements are corrupted by additive, IID, zero-mean Gaussian 
       noise with a variance of $0.0225V^2$.
@@ -152,10 +142,10 @@
   </subsection>
 </section>
 
-<section id="2"><h1>Musings</h1>
+<section id="1"><h1>Musings</h1>
 
 
-  <subsection id="2.0"><h1>estimateResUsingRLS</h1>
+  <subsection id="1.0"><h1>estimateResUsingRLS</h1>
     <ul>
       <li>
         <code>V</code> has 1 column. Why would <code>H</code> have 2 columns?
