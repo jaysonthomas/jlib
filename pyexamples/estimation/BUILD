@@ -9,6 +9,11 @@ py_binary (
 )
 
 py_binary (
+  name = "uniformDist",
+  srcs = ["uniformDist.py"],
+)
+
+py_binary (
   name = "2dGaussianPlay",
   srcs = ["2dGaussianPlay.py"],
 )

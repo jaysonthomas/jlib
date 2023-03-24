@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Examples in estimation</title>
+  <meta name="Examples in estimation" content="text/html; charset=utf-8;" />
+  <script type="text/javascript" src="../../logbook.js"></script>
+
+  <script src="../../logbook-mathjax-config.js" defer></script> 
+  <script type="text/javascript" id="MathJax-script" defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <link rel="stylesheet" type="text/css" href="../../logbook.css" />
+</head>
+
+<body onload="loadChapter('');">  
+
+  <div data-type="titlepage" pdf="no">
+    <header>
+      <h1><a href="../../index.html" style="text-decoration:none;">Logbook</a></h1>
+      <p style="font-size: 18px;"><a href="../../bio/jjwt.html">Jayson Wynne-Thomas</a></p>
+      <p style="font-size: 14px; text-align: right;"> 
+        Last modified <span id="last_modified"></span>.</br>
+        <script>
+        var d = new Date(document.lastModified);
+        document.getElementById("last_modified").innerHTML = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();</script>
+      </p>
+    </header>
+  </div>
+
+  <table style="width:100%;" pdf="no"><tr style="width:100%">
+    <td style="width:33%;text-align:left;">
+      <a class="previous_chapter" href="">Prev Chapter</a>
+    </td>
+    
+    <td style="width:33%;text-align:center;">
+      <a href="">Root Chapter</a>
+    </td>
+    
+    <td style="width:33%;text-align:right;">
+      <a class="next_chapter" href="">Next Chapter</a>
+    </td>
+  </tr></table>
+  
+  <div id="main" class="sidebar1">
+    <span style="font-size:10px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  </div>
+
+  <div id="mySidenav" class="sidebar">
+  
+<a href="#0">estimateResistanceUsingLS</a>
+<a href="#1">estimateResUsingRLS</a>
+<ul class="no-bullets">
+  <li><a href="#1.0">Initialise prior estimates for $\hat x$ and $\hat b$</a></li>
+  <li><a href="#1.1">$y$ and $H$</a></li>
+</ul>
+<a href="#2">uniformDist</a>
+</div>
+
+<chapter style="counter-reset: chapter 0"><h1>Examples in estimation</h1>
+
+<section id="0"><h1>estimateResistanceUsingLS</h1>
+  Find the best estimate for the resistance $R$, given the relationship 
+  $V=IR$. This is an example of batch LS, where all the measurements are
+  processed at once.
+  <p>
+    Given the voltage drop across a resistor at various current 
+    values, fit a line through the origin (i.e., determine the slope 
+    parameter $R$ for $y = HR$) using the method of least squares.
+  </p>
+  $$
+    \hat{R} = (H^TH)^{-1}H^Ty
+  $$
+
+  The <code>Jacobian matrix</code>, $H$, contains the partial 
+  derivatives of the 
+  measurement equation with respect to the parameter(s) of interest.
+
+  <figure>
+    <img style="height:200px; width:auto"
+    src="../../figures/jlib/pyexamples/estimateResistanceUsingLS_1.png"/>
+  </figure>
+  <p>
+    The estimated value will not match the true resistance value exactly, 
+    since we only have a limited number of noisy measurements.
+  </p>
+</section>
+
+<section id="1"><h1>estimateResUsingRLS</h1>
+  <m><code>V</code> has 1 column. Why would <code>H</code> have 2 columns?</m>
+  Using RLS, we fit a linear model that includes an offset term:
+  $$
+    y = Hx + b
+  $$
+
+  <subsection id="1.0"><h1>Initialise prior estimates for $\hat x$ and $\hat b$</h1>
+    <p>
+      To use RLS, we need to have a prior estimate and the uncertainty
+      associated with these prior estimates; otherwise, we won't know 
+      how to weigh the information we receive from a new measurement.
+      In this example, we assume that the initial estimates for $\hat{R}$ 
+      and $\hat{b}$ are uncorelated (i.e., the off-diagonal elements of 
+      the $2 \times 2$ covariance matrix are $0$). 
+    </p>
+
+    We set the prior estimate of:
+    <ul>
+      <li>
+        $R$ knowing there is a high chance it's not very good
+      </li>
+      <li>
+        $b$ knowing Ohm's law is true and there is a high chance it
+        is extremely close to $0$
+      </li>
+    </ul>
+
+    We set the recursive estimator as follows:
+    $$
+      \hat{R} \sim \mathcal{N}(4, 9.0),~~\hat{b} \sim \mathcal{N}(0, 0.2)
+    $$
+
+    Our initial guess is that both variables follow a Gaussian or normal 
+    distribution (we don't know the exact values, so they are considered as 
+    random variables). For example, $\hat{R}$ has a mean of $4\Omega$ and 
+    a standard deviation of $3\Omega$ (i.e., a variance of $9\Omega^{2}$).
+  </subsection>
+
+  <subsection id="1.1"><h1>$y$ and $H$</h1>
+      We assume that current values are known exactly, and that the voltage measurements are corrupted by additive, IID, zero-mean Gaussian noise with a variance of $0.0225V^2$.
+  </subsection>
+</section>
+
+<section id="2"><h1>uniformDist</h1>
+  A uniform distribution can be parameterized by two numbers, $a$ and $b$. 
+  Properties of this distribution:
+  <ul>
+    <li>It has probability density $0$ when $x< a$ or $x>b$</li>
+    <li>Each event between $b$ and $a$ has the same probability density of $\frac{1}{(b-a)}$</li>
+  </ul>
+  
+  To get the cumulative probability upto any given event, say $x=u$ such that $a \geq u \leq b$, we multiply the interval length between the events, $x=u$ and $x=a$ with the probability density, i.e. 
+  
+  $$
+    F_x(u) = (x-a) * \frac{1}{b-a}
+  $$
+
+  In a continuous space, we don't think about the probability of any given event, but the probability density of an interval. The probability that $x$ lies between $b$,$a$ is $1$ according to the above equation. Also, the cumulative probability beyond $x=b$ is $1$.
+
+  <p>
+    The way we find the probability of an event lying in an interval say between $x_1$ and $x_2$ in continuous space is by subtracting the cumulative probabilities for $x_1$ and $x_2$.
+  </p>
+
+  The slope of CDF ($\frac{Probability\,of\,interval}{Interval\,length}$), gives the value of PDF, i.e. probability density.
+
+  <div class="container">
+    <figure>
+      <img style="height:200px; width:auto"
+      src="../../figures/jlib/pyexamples/2_cdfVsPdf.png"/>
+      <figcaption>
+        The y-axis for CDF is the probability and for PDF is the probability density
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+</chapter>
+
+</body>
+</html>
