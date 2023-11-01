@@ -23,7 +23,7 @@
   <div data-type="titlepage" pdf="no">
     <header>
       <h1><a href="../../index.html" style="text-decoration:none;">Logbook</a></h1>
-      <p style="font-size: 18px;"><a href="../../bio/jjwt.html">Jayson Wynne-Thomas</a></p>
+      <p style="font-size: 18px;"><a href="../../pages/bio/jjwt.html">Jayson Wynne-Thomas</a></p>
       <p style="font-size: 14px; text-align: right;"> 
         Last modified <span id="last_modified"></span>.</br>
         <script>
@@ -32,20 +32,6 @@
       </p>
     </header>
   </div>
-
-  <table style="width:100%;" pdf="no"><tr style="width:100%">
-    <td style="width:33%;text-align:left;">
-      <a class="previous_chapter" href="">Prev Chapter</a>
-    </td>
-    
-    <td style="width:33%;text-align:center;">
-      <a href="">Root Chapter</a>
-    </td>
-    
-    <td style="width:33%;text-align:right;">
-      <a class="next_chapter" href="">Next Chapter</a>
-    </td>
-  </tr></table>
   
   <div id="main" class="sidebar1">
     <span style="font-size:10px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -70,6 +56,7 @@
   <li><a href="#5.0">Overview</a></li>
   <li><a href="#5.1">Collecting measurements</a></li>
   <li><a href="#5.2">Estimating the state/parameter</a></li>
+  <li><a href="#5.3">Todo</a></li>
 </ul>
 </div>
 
@@ -81,24 +68,24 @@
   processed at once.
   <p>
     Given the voltage drop across a resistor at various current 
-    values, fit a line through the origin (i.e., determine the slope 
-    parameter $R$ for $y = HR$) using the method of least squares.
+    values, fit a line through the origin (i.e., determine the <n>slope 
+    parameter $R$ </n> for $y = HR$) using the method of least squares.
   </p>
   $$
     \hat{R} = (H^TH)^{-1}H^Ty
   $$
 
-  The <code>Jacobian matrix</code>, $H$, contains the partial 
-  derivatives of the 
-  measurement equation with respect to the parameter(s) of interest.
-
   <figure>
     <img style="height:200px; width:auto"
     src="../../figures/jlib/pyexamples/estimateResistanceUsingLS_1.png"/>
+    <figcaption>
+      The line represents the estimation. We figure out $R$ and plot $V$ for a range of dummy $I$ values.
+    </figcaption>
   </figure>
+
   <p>
     The estimated value will not match the true resistance value exactly, 
-    since we only have a limited number of noisy measurements.
+    since we only have a <n>limited number of noisy measurements</n>.
   </p>
 </section>
 
@@ -273,6 +260,16 @@
     <ul>
       <li>The complexity of mapping the state space to the measurement space using $H$</li>
       <li>How noisy the measurements are, determined by $v$</li>
+    </ul>
+  </subsection>
+
+  <subsection id="5.3"><h1>Todo</h1>
+    <ul>
+      <li>
+        Write a few notes on matrix operation; on why $H^T$
+        has 2 columns, the reason for the order in which 
+        we do matrix multiplication and the reason for $y$'s row wise or column wise ordering.
+      </li>
     </ul>
   </subsection>
 </section>
