@@ -1,13 +1,11 @@
 #include <iostream>
 
-
 class Animal {
   public:
     void talk() const {
       std::cout << "Talk\n";
     }
 };
-
 
 class Human : public Animal {
   public:
@@ -16,7 +14,6 @@ class Human : public Animal {
     }
 };
 
-
 class Baby : private Human {
   public:
     void cry() {
@@ -24,15 +21,12 @@ class Baby : private Human {
     }
 };
 
-
 int main() {
   Animal animal;
   animal.talk();
 
-
   Human human;
   human.talk("hello!");
-
 
   Baby baby;
   baby.cry();

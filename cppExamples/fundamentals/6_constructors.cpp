@@ -5,7 +5,7 @@
 class Date {
     public:
         Date(int d, int m, int y) 
-        {  // This is a constructor.
+        {  
             Day(d);
             Month(m);
             Year(y);

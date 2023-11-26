@@ -11,6 +11,5 @@ void foo(int x)
 void main()
 {
   funcPtr fp = foo;
-  printf("%d\n", foo);
   fp(4);
 }
