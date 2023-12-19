@@ -45,15 +45,15 @@
 <a href="#3">Todo</a>
 </div>
 
-<chapter style="counter-reset: chapter 0"><h1>State estimation using LS</h1>
+<chapter style="counter-reset: chapter 0"><h1>State estimation using Batch LS</h1>
 <section id="0"><h1>Overview</h1>
-  [<a href="../../code/estimation/leastSquares.py">Code</a>]
+  [<a href="https://github.com/jaysonthomas/jlib/blob/main/code/estimation/leastSquares.py">Code</a>]
   <ul>
     <li>
-      $x$ is the state vector to be estimated. It is assumed to be constant when a measurement is made, meaning the vehicle is not moving
+      $x$ is the unknown state vector to be estimated of size $n$. It is assumed to be constant when a measurement is made, meaning the vehicle is not moving
     </li>
     <li>$H$ is a matrix mapping the state space to the measurement space</li>
-    <li>$y$ is the vector of $m$ noisy measurements</li>
+    <li>$y$ is the vector of $m$ noisy measurements - the more the samples, the more accurate the estimate $\hat{x}$ will be</li>
     <p>
       <li>
         The measurement model is given as:
@@ -70,47 +70,59 @@
   
 </section>
 
-<section id="1"><h1>Collecting measurements</h1>
-  In the implemented example, if $x$ is a 4-element state vector, then in the ideal case with no noise, a single measurement would be:
+<section><h1>Setup the state</h1>
+  $x$ is randomly generated or can be initialised with any arbitrary values. For all measurments, $x$ remains the same. However, $t$ (sampled from a uniform distribution) and $v$ (sampled from a gaussian distribution) changes.
+</section>
+
+<section><h1>Create the Jacobian</h1>
+<pre><code class="python">
+# Generate a vector of m random values picked between -5 and 5 
+# with equal probability.
+t = np.random.uniform(-5, 5, m)  
+</code></pre>
+
+  $H$ is a matrix (m, n) of $m$ rows. Each row, representing a polynomial of order $n-1$ ($n==4$), is created using a randomly picked $t$ value from a uniform distribution: 
+  $$
+    H_i = \begin{bmatrix}t_i^3 & t_i^2 & t_i^1 & t_i^0 \end{bmatrix}
+  $$
+</section>
+
+<section id="1"><h1>Collect measurements</h1>
+  An ideal single measurement is of the form:
 
   $$\begin{align*}
-    \tilde{y} &= Hx \\
-    \tilde{y} &= \begin{bmatrix}t^3 & t^2 & t & 1 \end{bmatrix}
+    y &= Hx \\
+    y &= \begin{bmatrix}t^3 & t^2 & t & 1 \end{bmatrix}
                   \begin{bmatrix}x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix} \\
-    \tilde{y} &= x_1t^3 + x_2t^2 + x_3t + x_4
+    y &= x_1t^3 + x_2t^2 + x_3t + x_4
   \end{align*}$$
 
-  $x$ is the unknown to be estimated. However, to generate the measurements, $x$ is randomly generated and mixed with noise to produce $\tilde{y}$:
+  To generate the $m$ noisy measurements, $x$ is mixed with gaussian noise $\mathcal{N}(0,1)$ to produce $y$:
 
   $$
-    \tilde{y} = Hx + v
+    y = Hx + v
   $$
 
-  For all measurments, $x$ remains the same. However, $t$ (sampled from a uniform distribution) and $v$ (sampled from a gaussian distribution) changes.
+<pre><code class="python">
+y = H @ x + np.random.normal(0, 1, size=(m))
+</code></pre>
 
   <p>
-    $\tilde{y}$ is a polynomial of order <code>len(x) - 1</code>, i.e. a 4-element state produces a 3rd order polynomial. In this case the state $x$ are the coefficients of the polynomial. <n>By generating observations from evaluating the polynomial at several different points (different values of $t$) we can gain a good approximation of the original state. Recovering a good approximation of the state requires more samples as the order of the polynomial increases</n>.
+    In this case the state $x$ are the coefficients of the polynomial. <n>By generating observations from evaluating the polynomial at several different points (different values of $t$) we can gain a good approximation of the original state. Recovering a good approximation of the state requires more samples as the order of the polynomial increases</n>.
   </p>
 </section>
 
-<section id="2"><h1>Estimating the state/parameter</h1>
+<section id="2"><h1>Estimate the state</h1>
   Given enough samples, $\hat{x}$ should converge to $x$. The exact number of measurements required depends on:
   <ul>
     <li>The complexity of mapping the state space to the measurement space using $H$</li>
     <li>How noisy the measurements are, determined by $v$</li>
   </ul>
-</section>
 
-<section id="3"><h1>Todo</h1>
-  <ul>
-    <li>
-      Write a few notes on matrix operation; on why $H^T$
-      has 2 columns, the reason for the order in which 
-      we do matrix multiplication and the reason for $y$'s row wise or column wise ordering.
-    </li>
-  </ul>
+<pre><code class="python">
+xHat = LA.pinv(H.T @ H) @ H.T @ y
+</code></pre>
 </section>
-  
 </chapter>
 
 </body>
