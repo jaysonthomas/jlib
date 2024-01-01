@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>State estimation using LS</title>
-  <meta name="State estimation using LS" content="text/html; charset=utf-8;" />
+  <title>State estimation using Batch LS</title>
+  <meta name="State estimation using Batch LS" content="text/html; charset=utf-8;" />
   <script type="text/javascript" src="../../../logbook.js"></script>
 
   <script src="../../../logbook-mathjax-config.js" defer></script> 
@@ -40,9 +40,10 @@
   <div id="mySidenav" class="sidebar">
   
 <a href="#0">Overview</a>
-<a href="#1">Collecting measurements</a>
-<a href="#2">Estimating the state/parameter</a>
-<a href="#3">Todo</a>
+<a href="#1">Setup the state</a>
+<a href="#2">Create the Jacobian</a>
+<a href="#3">Collect measurements</a>
+<a href="#4">Estimate the state</a>
 </div>
 
 <chapter style="counter-reset: chapter 0"><h1>State estimation using Batch LS</h1>
@@ -70,11 +71,11 @@
   
 </section>
 
-<section><h1>Setup the state</h1>
+<section id="1"><h1>Setup the state</h1>
   $x$ is randomly generated or can be initialised with any arbitrary values. For all measurments, $x$ remains the same. However, $t$ (sampled from a uniform distribution) and $v$ (sampled from a gaussian distribution) changes.
 </section>
 
-<section><h1>Create the Jacobian</h1>
+<section id="2"><h1>Create the Jacobian</h1>
 <pre><code class="python">
 # Generate a vector of m random values picked between -5 and 5 
 # with equal probability.
@@ -87,7 +88,7 @@ t = np.random.uniform(-5, 5, m)
   $$
 </section>
 
-<section id="1"><h1>Collect measurements</h1>
+<section id="3"><h1>Collect measurements</h1>
   An ideal single measurement is of the form:
 
   $$\begin{align*}
@@ -112,7 +113,7 @@ y = H @ x + np.random.normal(0, 1, size=(m))
   </p>
 </section>
 
-<section id="2"><h1>Estimate the state</h1>
+<section id="4"><h1>Estimate the state</h1>
   Given enough samples, $\hat{x}$ should converge to $x$. The exact number of measurements required depends on:
   <ul>
     <li>The complexity of mapping the state space to the measurement space using $H$</li>
