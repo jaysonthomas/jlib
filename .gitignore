@@ -33,3 +33,5 @@
 
 # Bazel build artifacts (symlinks)
 bazel-*
+
+cppMatplotlib/
