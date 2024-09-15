@@ -35,3 +35,6 @@
 bazel-*
 
 cppMatplotlib/
+code/pf/build/
+code/pf/cmake-build-debug/
+code/pf/.idea

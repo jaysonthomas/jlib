@@ -52,19 +52,30 @@
 </section>
 
 <section id="1"><h1>Setup the state</h1>
-  $x$ is randomly generated or can be initialised with any arbitrary values. $x$ is assumed to be constant when a measurement is made and for all measurments it is assumed to remain the same.
+  <ul>
+    <li>$x$ is randomly generated or can be initialised with any arbitrary values.</li>
+    <li>$x$ is assumed to be constant when a measurement is made.</li>
+    <li>For all measurments, $x$ remains the same.</li>
+  </ul>
 </section>
 
 <section id="2"><h1>Create the Jacobian</h1>
-  $H$ is a matrix (m, n) of $m$ rows. Each row, representing a polynomial of order $n-1$, is created using a randomly picked (sampled) $t$ value from a uniform distribution: 
+  $H$ is a $k \times m$ matrix, where
+  <ul>
+    <li>$m$ is the number of input variables (here, $m=4$)</li>
+    <li>$k$ is the number of measurements taken</li>
+  </ul>
+  
+  Each row, representing a polynomial of order $m-1$, is created using a 
+  randomly picked (sampled) $t$ value from a uniform distribution: 
   $$
     H_i = \begin{bmatrix}t_i^3 & t_i^2 & t_i^1 & t_i^0 \end{bmatrix}
   $$
 
 <pre><code class="python">
-# Generate a vector of m random values picked between -5 and 5 
+# Generate a vector of k random values picked between -5 and 5 
 # with equal probability.
-t = np.random.uniform(-5, 5, m)  
+t = np.random.uniform(-5, 5, k)  
 </code></pre>
 </section>
 
@@ -78,19 +89,21 @@ t = np.random.uniform(-5, 5, m)
     y &= x_1t^3 + x_2t^2 + x_3t + x_4
   \end{align*}$$
 
-  To generate the $m$ noisy measurements, $x$ is mixed with gaussian noise $\mathcal{N}(0,1)$ to produce $y$ (i.e. $v$ is sampled from a gaussian distribution):
+  <subsubsection><h1>Measurement noise</h1>
+    To generate the $k$ noisy measurements, $x$ is mixed with gaussian noise $\mathcal{N}(0,1)$ to produce $y$ (i.e. $v$ is sampled from a gaussian distribution):
 
-  $$
-    y = Hx + v
-  $$
+    $$
+      y = Hx + v
+    $$
 
-<pre><code class="python">
-y = H @ x + np.random.normal(0, 1, size=(m))
-</code></pre>
+  <pre><code class="python">
+  y = H @ x + np.random.normal(0, 1, size=(k))
+  </code></pre>
 
-  <p>
-    In this case the state $x$ are the coefficients of the polynomial. <n>By generating observations from evaluating the polynomial at several different points (different values of $t$) we can gain a good approximation of the original state. Recovering a good approximation of the state requires more samples as the order of the polynomial increases</n>.
-  </p>
+    <p>
+      Here, state $x$ contains the coefficients of the polynomial. <n>By generating observations from evaluating the polynomial at several different points (different values of $t$), a good approximation is gained of the original state</n>. <m>Recovering a good approximation of the state requires more samples as the order of the polynomial increases</m>.
+    </p>
+  </subsubsection>
 </section>
 
 <section id="4"><h1>Estimate the state</h1>
