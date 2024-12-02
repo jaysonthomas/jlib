@@ -11,7 +11,7 @@ public:
   double angleInRad;
   Point direction;    
 
-  Bot(const Point &pos, const double &angleInDeg, const Point &direction);
+  Bot(const Point &pos, const double &angleInDeg);
 };
 
 #endif

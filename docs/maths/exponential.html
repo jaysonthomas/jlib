@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jlib documentation contents</title>
-  <meta name="Jlib documentation contents" content="text/html; charset=utf-8;" />
-  <script type="text/javascript" src="../../logbook.js"></script>
+  <title>State estimation using Batch LS</title>
+  <meta name="State estimation using Batch LS" content="text/html; charset=utf-8;" />
+  <script type="text/javascript" src="../../../logbook.js"></script>
 
-  <script src="../../logbook-mathjax-config.js" defer></script> 
+  <script src="../../../logbook-mathjax-config.js" defer></script> 
   <script type="text/javascript" id="MathJax-script" defer
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
   </script>
@@ -15,15 +15,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
-  <link rel="stylesheet" type="text/css" href="../../logbook.css" />
+  <link rel="stylesheet" type="text/css" href="../../../logbook.css" />
 </head>
 
 <body onload="loadChapter('');">  
 
   <div data-type="titlepage" pdf="no">
     <header>
-      <h1><a href="../../index.html" style="text-decoration:none;">Logbook</a></h1>
-      <p style="font-size: 18px;"><a href="../../pages/bio/jjwt.html">Jayson Wynne-Thomas</a></p>
+      <h1><a href="../../../index.html" style="text-decoration:none;">Logbook</a></h1>
+      <p style="font-size: 18px;"><a href="../../../pages/bio/jjwt.html">Jayson Wynne-Thomas</a></p>
       <p style="font-size: 14px; text-align: right;"> 
         Last modified <span id="last_modified"></span>.</br>
         <script>
@@ -39,22 +39,23 @@
 
   <div id="mySidenav" class="sidebar">
   
-<a href="#0">Estimation</a>
+<a href="#0">Overview</a>
+<a href="#1">Setup the state</a>
+<a href="#2">Create the Jacobian</a>
+<a href="#3">Collect measurements</a>
+<a href="#4">Estimate the state</a>
 </div>
 
-<chapter style="counter-reset: chapter 0"><h1>Jlib documentation contents</h1>
+<chapter style="counter-reset: chapter 0"><h1>State estimation using Batch LS</h1>
+<section id="0"><h1>Overview</h1>
+  [<a href="https://github.com/jaysonthomas/jlib/blob/main/code/maths/exponential.py">Code</a>]
 
-<section id="0"><h1>Estimation</h1>
-  <ul>
-    <li><a href="estimation/batchlls.html">Simple state estimation example - batchLS [py]</a></li>
-    <li><a href="leastSquaresEstimation.html">Least Squares Estimation</a></li>
-  </ul>
-</section>
-
-<section><h1>Maths</h1>
-  <ul>
-    <li><a href="maths/exponential.html">Exponential</a></li>
-  </ul>
+  <div class="img-container">
+    <figure>
+      <img style="height:210px; width:auto"
+      src="../../figures/maths/1_exponential.png"/>
+    </figure>
+  </div>
 </section>
 </chapter>
 

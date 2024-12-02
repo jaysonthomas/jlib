@@ -10,7 +10,6 @@
 class Map
 {
 public:
-  Points unmodifiedPoints;
   Points points;
   Line lines;
 

@@ -38,3 +38,4 @@ cppMatplotlib/
 code/pf/build/
 code/pf/cmake-build-debug/
 code/pf/.idea
+code/pf/.vscode/settings.json 

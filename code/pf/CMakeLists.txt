@@ -8,6 +8,7 @@ add_executable(
   main.cpp 
   map/Map.cpp
   bot/Bot.cpp
+  plotter/Plotter.cpp
 )
 
 target_include_directories(

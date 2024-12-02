@@ -5,7 +5,6 @@
 
 void Map::initialise(const Points &map)
 {
-  unmodifiedPoints = map;
   initialisePolygonFormat(map);
   initialiseClosedMapPoints(map);
   initialiseBorderLines(points);

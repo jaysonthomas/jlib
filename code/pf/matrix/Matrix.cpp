@@ -2,6 +2,8 @@
 #include "angleConversion.h"
 #include "coord.h"
 
+#include <cmath>
+
 Eigen::Matrix3d Matrix::createTranslation(const Point &point)
 {
   Eigen::Matrix3d output;

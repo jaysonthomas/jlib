@@ -1,10 +1,11 @@
 #include "Bot.h"
 #include "angleConversion.h"
+#include <cmath> 
 
-Bot::Bot(const Point &pos, const double &angleInDeg, const Point &direction)
+Bot::Bot(const Point &pos, const double &angleInDeg)
 {
   Bot::pos = pos;
   angleInRad = toRad(angleInDeg);
-  Bot::direction = direction;
+  Bot::direction = {cosf32(angleInDeg), sinf32(angleInDeg)};
 }
 
