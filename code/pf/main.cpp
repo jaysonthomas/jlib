@@ -1,11 +1,11 @@
 #define _USE_MATH_DEFINES
 #include <iostream>
 #include <cmath>
-#include "util/matplotlibcpp.h"
-#include "map/Map.h"
-#include "include/point.h"
-#include "bot/Bot.h"
-#include "plotter/Plotter.h"
+#include <matplotlibcpp.hpp>
+#include <Map.hpp>
+#include <point.hpp>
+#include <Bot.hpp>
+#include <Plotter.hpp>
 
 namespace plt = matplotlibcpp;
 

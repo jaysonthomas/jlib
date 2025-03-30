@@ -1,8 +1,8 @@
 #ifndef BOT_H_
 #define BOT_H_
 
-#include "point.h"
-#include "line.h"
+#include <point.hpp>
+#include <line.hpp>
 
 class Bot
 {

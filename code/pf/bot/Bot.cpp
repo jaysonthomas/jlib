@@ -1,5 +1,5 @@
-#include "Bot.h"
-#include "angleConversion.h"
+#include "Bot.hpp"
+#include <angleConversion.hpp>
 #include <cmath> 
 
 Bot::Bot(const Point &pos, const double &angleInDeg)

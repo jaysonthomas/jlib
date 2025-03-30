@@ -1,8 +1,8 @@
 #ifndef MAP_H_
 #define MAP_H_
 
-#include "point.h"
-#include "line.h"
+#include <point.hpp>
+#include <line.hpp>
 
 /*
  * Except for the unmodified points, all other variables in Map are closed.

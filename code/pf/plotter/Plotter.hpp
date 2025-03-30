@@ -2,7 +2,7 @@
 #define PLOTTER_H_
 
 #include <string>
-#include "Map.h"
+#include <Map.hpp>
 
 struct MapConfig
 {
@@ -10,10 +10,10 @@ struct MapConfig
   const std::string lineWidth = "2";
 };
 
-struct BotConfig
-{
-  const std::string
-};
+// struct BotConfig
+// {
+//   const std::string
+// };
 
 class Plotter 
 {

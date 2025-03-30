@@ -1,6 +1,6 @@
-#include "Bot.h"
-#include "matplotlibcpp.h"
-#include "Plotter.h"
+#include <Bot.hpp>
+#include <matplotlibcpp.hpp>
+#include "Plotter.hpp"
 
 namespace plt = matplotlibcpp;
 
