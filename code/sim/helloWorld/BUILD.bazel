@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: MIT-0
+
+# Compile a sample application.
+cc_binary(
+    name = "simple_continuous_time_system",
+    srcs = ["simple_continuous_time_system.cc"],
+    deps = [
+        "@drake//systems/analysis",
+        "@drake//systems/framework",
+    ],
+)
+
+sh_test(
+    name = "simple_continuous_time_system_test",
+    size = "small",
+    srcs = [":simple_continuous_time_system"],
+)

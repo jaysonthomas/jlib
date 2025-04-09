@@ -40,4 +40,6 @@ code/pf/cmake-build-debug/
 code/pf/.idea
 code/pf/.vscode/settings.json 
 
+code/drake/
+
 __pycache__*

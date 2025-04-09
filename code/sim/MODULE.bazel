@@ -1,0 +1,16 @@
+module(name = "sim")
+
+# Add the Bazel rules we need.
+bazel_dep(name = "rules_cc", version = "0.0.17")
+
+# Use the host system Eigen.
+local_eigen_repositiory = use_repo_rule("//:eigen.bzl", "local_eigen_repository")
+local_eigen_repositiory(name = "eigen")
+
+# Here we introduce Drake as a module dependency, but note that Drake is not
+# published to any Bazel registry. 
+bazel_dep(name = "drake")
+local_path_override(
+    module_name = "drake",
+    path = "/home/jayson/logbook/jlib/code/drake",
+)
