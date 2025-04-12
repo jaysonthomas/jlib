@@ -186,7 +186,7 @@
     },
     "@@drake+//tools/workspace:default.bzl%drake_dep_repositories": {
       "general": {
-        "bzlTransitiveDigest": "PS4cKBpdKNIP3n1flQuESKXE6ki5269QyUzxfiyT45Q=",
+        "bzlTransitiveDigest": "Ts/uubuNewRg6h8VJGLYO6ZhthhMB3l7hOme6FKV7mI=",
         "usagesDigest": "XwlBzZvJ4DVHjhDYRjcOAQ2GXSWMczwMwD3VA2YRRmQ=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -254,9 +254,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "RobotLocomotion/models",
-              "commit": "2c961001bc919203c70722363e3be9ea390d98aa",
+              "commit": "af1d93cd273f07bf3d969bb37e93e190036d1a0b",
               "commit_pin": false,
-              "sha256": "fc028ede0b3ecbabaf8a7bb6ae5a4321bbb0b1d313f79108b9ff2b2114ac5c8c",
+              "sha256": "1b275bfa26476baba28a0d4dc8e36db17641bd832cefaf0ee83ed285249e2753",
               "build_file": "@@drake+//tools/workspace/drake_models:package.BUILD.bazel",
               "patches": [],
               "extra_strip_prefix": "",
@@ -600,9 +600,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "PyCQA/pycodestyle",
-              "commit": "2.12.1",
+              "commit": "2.13.0",
               "commit_pin": false,
-              "sha256": "231f65fbf5558e342cbad275245accb8a988d637cbeaf66508dd890f3d2d60fa",
+              "sha256": "b1a4db0d9b8285f6643bcdb41362be6d6c94b891b13ead09c57a2513c46b717b",
               "build_file": "@@drake+//tools/workspace/pycodestyle:package.BUILD.bazel",
               "patches": [],
               "extra_strip_prefix": "",
@@ -657,9 +657,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "RobotLocomotion/styleguide",
-              "commit": "736a797e4bc25a2c064fee147e659004675b7387",
+              "commit": "930013ec1863a0c7bdf8766c8c16443515d2a66d",
               "commit_pin": false,
-              "sha256": "6fb793292a94baf75b9ad1fb91910cf710b5b1a36823e09abf17ffbea8b06aec",
+              "sha256": "555e5f27b7e318e27f5facc74d70bdff9dde6558119fcb175706b898e4ef0fcc",
               "build_file": "@@drake+//tools/workspace/styleguide:package.BUILD.bazel",
               "patches": [
                 "@@drake+//tools/workspace/styleguide:patches/upstream/sre_deprecation.patch",
@@ -767,7 +767,7 @@
     },
     "@@drake+//tools/workspace:default.bzl%internal_crate_universe_repositories": {
       "general": {
-        "bzlTransitiveDigest": "PS4cKBpdKNIP3n1flQuESKXE6ki5269QyUzxfiyT45Q=",
+        "bzlTransitiveDigest": "Ts/uubuNewRg6h8VJGLYO6ZhthhMB3l7hOme6FKV7mI=",
         "usagesDigest": "iTegRxWiSkEHQ+LIqEKPVkyUS+cGwku1LXcLrB2dDXA=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -1964,7 +1964,7 @@
               "build_file": "@@drake+//tools/workspace/crate_universe/lock/details:BUILD.libc-0.2.171.bazel"
             }
           },
-          "crate__log-0.4.26": {
+          "crate__log-0.4.27": {
             "repoRuleId": "@@drake+//tools/workspace/crate_universe:repository.bzl%crate_http_archive",
             "attributes": {
               "mirrors": {
@@ -1999,13 +1999,13 @@
                   "https://s3.amazonaws.com/drake-mirror/mosek/{path}"
                 ]
               },
-              "sha256": "30bde2b3dc3671ae49d8e2e9f044c7c005836e7a023ee57cffa25ab82764bb9e",
+              "sha256": "13dc2df351e3202783a1fe0d44375f7295ffb4049267b0f3018346dc122a1d94",
               "type": "tar.gz",
               "urls": [
-                "https://static.crates.io/crates/log/0.4.26/download"
+                "https://static.crates.io/crates/log/0.4.27/download"
               ],
-              "strip_prefix": "log-0.4.26",
-              "build_file": "@@drake+//tools/workspace/crate_universe/lock/details:BUILD.log-0.4.26.bazel"
+              "strip_prefix": "log-0.4.27",
+              "build_file": "@@drake+//tools/workspace/crate_universe/lock/details:BUILD.log-0.4.27.bazel"
             }
           },
           "crate__memchr-2.7.4": {
@@ -2272,7 +2272,7 @@
               "build_file": "@@drake+//tools/workspace/crate_universe/lock/details:BUILD.proc-macro2-1.0.94.bazel"
             }
           },
-          "crate__quote-1.0.39": {
+          "crate__quote-1.0.40": {
             "repoRuleId": "@@drake+//tools/workspace/crate_universe:repository.bzl%crate_http_archive",
             "attributes": {
               "mirrors": {
@@ -2307,13 +2307,13 @@
                   "https://s3.amazonaws.com/drake-mirror/mosek/{path}"
                 ]
               },
-              "sha256": "c1f1914ce909e1658d9907913b4b91947430c7d9be598b15a1912935b8c04801",
+              "sha256": "1885c039570dc00dcb4ff087a89e185fd56bae234ddc7f056a945bf36467248d",
               "type": "tar.gz",
               "urls": [
-                "https://static.crates.io/crates/quote/1.0.39/download"
+                "https://static.crates.io/crates/quote/1.0.40/download"
               ],
-              "strip_prefix": "quote-1.0.39",
-              "build_file": "@@drake+//tools/workspace/crate_universe/lock/details:BUILD.quote-1.0.39.bazel"
+              "strip_prefix": "quote-1.0.40",
+              "build_file": "@@drake+//tools/workspace/crate_universe/lock/details:BUILD.quote-1.0.40.bazel"
             }
           },
           "crate__ryu-1.0.20": {
@@ -3042,7 +3042,7 @@
     },
     "@@drake+//tools/workspace:default.bzl%internal_repositories": {
       "general": {
-        "bzlTransitiveDigest": "PS4cKBpdKNIP3n1flQuESKXE6ki5269QyUzxfiyT45Q=",
+        "bzlTransitiveDigest": "Ts/uubuNewRg6h8VJGLYO6ZhthhMB3l7hOme6FKV7mI=",
         "usagesDigest": "L7Xp1Z3dLNNuwt/JuPez1MvyrmKODvzrT3xbJT6WzjQ=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -3052,9 +3052,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "abseil/abseil-cpp",
-              "commit": "35d35604d6d57850699b5a8cb9da2a5ea418ff88",
+              "commit": "c65fa830409351c8eca1f741cc153255ae59d258",
               "commit_pin": false,
-              "sha256": "48afcdfd16e79b196755b223d624ef9f402cb71d8a1891804ba2903f20de2070",
+              "sha256": "8e7464c2682a4c749aed8129f15301ae7609d9ad68722b0870b6bda12583d7a1",
               "patches": [
                 "@@drake+//tools/workspace/abseil_cpp_internal:patches/upstream/specific_iostream_includes.patch",
                 "@@drake+//tools/workspace/abseil_cpp_internal:patches/disable_int128_on_clang.patch",
@@ -3414,15 +3414,6 @@
               "maven_name": "drake_java_internal_maven_com_jidesoft_jide_oss"
             }
           },
-          "common_robotics_utilities": {
-            "repoRuleId": "@@drake+//tools/workspace:deprecation.bzl%add_deprecation",
-            "attributes": {
-              "date": "2025-04-01",
-              "cc_aliases": {
-                "common_robotics_utilities": "@common_robotics_utilities_internal//:common_robotics_utilities"
-              }
-            }
-          },
           "common_robotics_utilities_internal": {
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
@@ -3639,9 +3630,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "deepmind/dm_control",
-              "commit": "1.0.26",
+              "commit": "1.0.28",
               "commit_pin": false,
-              "sha256": "1d95095ba8780f582805e9f144d15c67fe618c59bd87e689e66449b440fd13e3",
+              "sha256": "78720a9442d9f7adebf73f362a42526b5c4fc5aeba75484380672ef1d38fa028",
               "build_file": "@@drake+//tools/workspace/dm_control_internal:package.BUILD.bazel",
               "patches": [],
               "extra_strip_prefix": "",
@@ -3684,13 +3675,11 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "flexible-collision-library/fcl",
-              "commit": "b03987c495b75b5d873f932b1ff3fc27c1494c87",
+              "commit": "a3fbc9fe4f619d7bb1117dc137daa497d2de454b",
               "commit_pin": false,
-              "sha256": "b055315cad3394b7bb1db8eead56a9063e95ed6cb0f43e12b244ab0bd2ce5be8",
+              "sha256": "dd542daa13ab2f861f29792f20be50a1776859540c46360b728d1fad5d819a0c",
               "build_file": "@@drake+//tools/workspace/fcl_internal:package.BUILD.bazel",
-              "patches": [
-                "@@drake+//tools/workspace/fcl_internal:patches/upstream/cassert.patch"
-              ],
+              "patches": [],
               "extra_strip_prefix": "",
               "mirrors": {
                 "crate_universe": [
@@ -3842,9 +3831,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "google/benchmark",
-              "commit": "v1.9.1",
+              "commit": "v1.9.2",
               "commit_pin": false,
-              "sha256": "32131c08ee31eeff2c8968d7e874f3cb648034377dfc32a4c377fa8796d84981",
+              "sha256": "409075176168dc46bbb81b74c1b4b6900385b5d16bfc181d678afb060d928bd3",
               "patches": [
                 "@@drake+//tools/workspace/googlebenchmark:patches/console_allocs.patch",
                 "@@drake+//tools/workspace/googlebenchmark:patches/remove_overloaded_fixture_set_up.patch",
@@ -3980,9 +3969,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "Farama-Foundation/Gymnasium",
-              "commit": "v1.1.0",
+              "commit": "v1.1.1",
               "commit_pin": false,
-              "sha256": "5c67fc365e4b881d3858f22450c6aba60140f697196c4b07b79df5d5c54172ff",
+              "sha256": "7883c878c1ed5bcc7a5ba621ac859d23be9a26baea9f2a42596dc072143b0619",
               "build_file": "@@drake+//tools/workspace/gymnasium_py:package.BUILD.bazel",
               "patches": [],
               "extra_strip_prefix": "",
@@ -4217,9 +4206,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "glennrp/libpng",
-              "commit": "v1.6.46",
+              "commit": "v1.6.47",
               "commit_pin": false,
-              "sha256": "767b01936f9620d4ab4cdf6ec348f6526f861f825648b610b1d604167dc738d2",
+              "sha256": "631a4c58ea6c10c81f160c4b21fa8495b715d251698ebc2552077e8450f30454",
               "build_file": "@@drake+//tools/workspace/libpng_internal:package.BUILD.bazel",
               "patches": [],
               "extra_strip_prefix": "",
@@ -4446,9 +4435,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "google-deepmind/mujoco_menagerie",
-              "commit": "d3b4507788d70ccc150cf7a5090e99167f6159b1",
+              "commit": "bf04290ac7911fa7a39339c7e507792fd464c438",
               "commit_pin": false,
-              "sha256": "33b5bea1d0f51dc8457b4c94aa0e7f04ee4f4cd7438831fd74f87e9705097fd2",
+              "sha256": "4461d93363716894f5800ab773d855133537fb4580caf87becb78042e2547be1",
               "build_file": "@@drake+//tools/workspace/mujoco_menagerie_internal:package.BUILD.bazel",
               "patches": [],
               "extra_strip_prefix": "",
@@ -4589,9 +4578,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "jlblancoc/nanoflann",
-              "commit": "v1.7.0",
+              "commit": "v1.7.1",
               "commit_pin": false,
-              "sha256": "5e0b05a209aa61e0b0377bcad8b6978862b17f096f67dbab1630ec9593aa075d",
+              "sha256": "887e4e57e9c5fbf1c2937f9f5a9bc461c4786d54729b57a9c19547bdedb46986",
               "build_file": "@@drake+//tools/workspace/nanoflann_internal:package.BUILD.bazel",
               "patches": [
                 "@@drake+//tools/workspace/nanoflann_internal:patches/namespace.patch"
@@ -5145,9 +5134,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "ros/xacro",
-              "commit": "2.0.12",
+              "commit": "2.0.13",
               "commit_pin": false,
-              "sha256": "396cad4883b0214f1c77a57c2935ac46f3f8300626034bdd2e22ce3a5874e4f6",
+              "sha256": "6df0d44af8a6bf9f23f0536ce167a0cd7b4c01281100dfea7e17d504363b424d",
               "build_file": "@@drake+//tools/workspace/ros_xacro_internal:package.BUILD.bazel",
               "patches": [
                 "@@drake+//tools/workspace/ros_xacro_internal:patches/disable-import-warning.patch"
@@ -5397,9 +5386,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "DLR-RM/stable-baselines3",
-              "commit": "v2.5.0",
+              "commit": "v2.6.0",
               "commit_pin": false,
-              "sha256": "1906a018ee76b71ccc5c774d6a3fcc79d34b5a51b33ba7edfccca40a7f5bc5f7",
+              "sha256": "32813deeea6341be22fa276862f6e9c03b35753a4c8df0b95bffdbb76382ab61",
               "build_file": "@@drake+//tools/workspace/stable_baselines3_internal:package.BUILD.bazel",
               "patches": [
                 "@@drake+//tools/workspace/stable_baselines3_internal:patches/no_torch.patch"
@@ -5539,9 +5528,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "DrTimothyAldenDavis/SuiteSparse",
-              "commit": "v7.9.0",
+              "commit": "v7.10.1",
               "commit_pin": false,
-              "sha256": "bc0b3987a502913959581614ab67098f9f203a45bb424870f2342375f96dbcb7",
+              "sha256": "9e2974e22dba26a3cffe269731339ae8e01365cfe921b06be6359902bd05862c",
               "build_file": "@@drake+//tools/workspace/suitesparse_internal:package.BUILD.bazel",
               "patches": [],
               "extra_strip_prefix": "",
@@ -5726,9 +5715,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "leethomason/tinyxml2",
-              "commit": "10.0.0",
+              "commit": "11.0.0",
               "commit_pin": false,
-              "sha256": "3bdf15128ba16686e69bce256cc468e76c7b94ff2c7f391cc5ec09e40bff3839",
+              "sha256": "5556deb5081fb246ee92afae73efd943c889cef0cafea92b0b82422d6a18f289",
               "build_file": "@@drake+//tools/workspace/tinyxml2_internal:package.BUILD.bazel",
               "patches": [
                 "@@drake+//tools/workspace/tinyxml2_internal:patches/namespace.patch"
@@ -5818,9 +5807,9 @@
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
               "repository": "python/typing_extensions",
-              "commit": "4.12.2",
+              "commit": "4.13.0",
               "commit_pin": false,
-              "sha256": "bf6f56b36d8bc9156e518eb1cc37a146284082fa53522033f772aefbecfd15fc",
+              "sha256": "ca6daaa503b09ffdd594f655ea2fbaebf0c080c932c931d3a20019da9bea35f0",
               "build_file": "@@drake+//tools/workspace/typing_extensions_internal:package.BUILD.bazel",
               "patches": [],
               "extra_strip_prefix": "",
@@ -5996,19 +5985,6 @@
               "upgrade_advice": "\n        NOTE: Do not upgrade without testing the tutorials on Deepnote.  See\n        Drake #18289.  v20.35.0 was tested and showed the same symptoms.\n        "
             }
           },
-          "voxelized_geometry_tools": {
-            "repoRuleId": "@@drake+//tools/workspace:deprecation.bzl%add_deprecation",
-            "attributes": {
-              "date": "2025-04-01",
-              "cc_aliases": {
-                "cl_hpp": "@voxelized_geometry_tools_internal//:cl_hpp",
-                "cuda_voxelization_helpers": "@voxelized_geometry_tools_internal//:cuda_voxelization_helpers",
-                "opencl_voxelization_helpers": "@voxelized_geometry_tools_internal//:opencl_voxelization_helpers",
-                "pointcloud_voxelization": "@voxelized_geometry_tools_internal//:pointcloud_voxelization",
-                "voxelized_geometry_tools": "@voxelized_geometry_tools_internal//:voxelized_geometry_tools"
-              }
-            }
-          },
           "voxelized_geometry_tools_internal": {
             "repoRuleId": "@@drake+//tools/workspace:github.bzl%_github_archive_real",
             "attributes": {
@@ -6060,8 +6036,8 @@
             "repoRuleId": "@@drake+//tools/workspace/vtk_internal:repository.bzl%_vtk_internal_repository_impl",
             "attributes": {
               "repository": "Kitware/VTK",
-              "commit": "d236d27dde52f1f14eb919adacf0d355af6a440a",
-              "sha256": "349aa9da6b2be0b21d522695af116219c0fd43fe62902508f21eb59251303185",
+              "commit": "4200a02757df119c8c4ca8a66f1e52729522b1f5",
+              "sha256": "8e2c070127586d5e9d0c3cdd33ca87b08a7dd5b21237922576cb1d1f4d0e7631",
               "build_file": "@@drake+//tools/workspace/vtk_internal:package.BUILD.bazel",
               "patches": [
                 "@@drake+//tools/workspace/vtk_internal:patches/upstream/common_core_rm_iostream.patch",
@@ -6215,7 +6191,7 @@
           "spgrid_internal": {
             "repoRuleId": "@@bazel_tools//tools/build_defs/repo:local.bzl%new_local_repository",
             "attributes": {
-              "path": "/home/jayson/.cache/bazel/_bazel_jayson/59867be37830d2787da9505f72817b70/external/drake+/third_party/spgrid",
+              "path": "/home/jayson/.cache/bazel/_bazel_jayson/be0c50d467d036665bae446da6b4c378/external/drake+/third_party/spgrid",
               "build_file": "@@drake+//tools/workspace/spgrid_internal:package.BUILD.bazel"
             }
           }

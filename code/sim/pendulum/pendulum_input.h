@@ -47,8 +47,7 @@ class PendulumInput final : public drake::systems::BasicVector<T> {
   /// An abbreviation for our row index constants.
   typedef PendulumInputIndices K;
 
-  /// Default constructor.  Sets all rows to their default value:
-  /// @arg @c tau defaults to 0.0 Newton-meters.
+  /// Default constructor.  Sets all rows to their default value
   PendulumInput() : drake::systems::BasicVector<T>(K::kNumCoordinates) {
     this->set_tau(0.0);
   }
@@ -58,14 +57,15 @@ class PendulumInput final : public drake::systems::BasicVector<T> {
   /// @name Implements CopyConstructible, CopyAssignable, MoveConstructible,
   /// MoveAssignable
   //@{
-  PendulumInput(const PendulumInput& other)
-      : drake::systems::BasicVector<T>(other.values()) {}
-  PendulumInput(PendulumInput&& other) noexcept
-      : drake::systems::BasicVector<T>(std::move(other.values())) {}
+  PendulumInput(const PendulumInput& other) : drake::systems::BasicVector<T>(other.values()) {}
+
+  PendulumInput(PendulumInput&& other) noexcept : drake::systems::BasicVector<T>(std::move(other.values())) {}
+
   PendulumInput& operator=(const PendulumInput& other) {
     this->values() = other.values();
     return *this;
   }
+
   PendulumInput& operator=(PendulumInput&& other) noexcept {
     this->values() = std::move(other.values());
     other.values().resize(0);
