@@ -14,10 +14,13 @@ class AnimationManager:
     # Fill the background with the speicifed colour.
     self.screen.fill(self.colour.gray)
 
-  def drawRect(self, colour, topLeftX_m=0, topLeftY_m=0, width=10, height=10):
-    x_pix = self.toPixels(topLeftX_m)
-    y_pix = self.toPixels(topLeftY_m)
-    x_pix, y_pix = self.toScreenPos(x_pix, y_pix)
+  def drawLine(self, colour, A, G):
+    A = (self.toPixels(A[0]), self.toPixels(A[1]))
+    G = (self.toPixels(G[0]), self.toPixels(G[1]))
+    pygame.draw.line(self.screen, colour, A, G, 10)
+
+  def drawRect(self, colour, xTopLeftPix=0, yTopLeftPix=0, width=10, height=10):
+    x_pix, y_pix = self.toScreenPos(xTopLeftPix, yTopLeftPix)
     print(f"{x_pix}, {y_pix}")
     pygame.draw.rect(self.screen, colour, (x_pix, y_pix, width, height))
 

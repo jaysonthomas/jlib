@@ -7,9 +7,9 @@ class TimeManager:
     self.dt = dt
 
   def isItTimeToUpdatePlot(self):
-    self.currentTime = perf_counter() - self.startTime
-    if self.currentTime > self.dt + self.lastUpdate:
-      self.lastUpdate = self.currentTime
+    elapsedTime = perf_counter() - self.startTime
+    if elapsedTime >= self.dt + self.lastUpdate:
+      self.lastUpdate = elapsedTime
       return True
     
     return False
