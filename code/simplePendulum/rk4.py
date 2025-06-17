@@ -4,7 +4,7 @@ import timing
 class RK4:
   def __init__(self, f, timing, y0):
     self.h = timing.h
-    self.t = timing.t
+    self.t = timing.t       # The different time instances.
 
     # Preallocate solution array
     self.y = np.zeros((timing.nInstances, 2))

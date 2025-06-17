@@ -6,19 +6,15 @@ from dcMotor import DCMotor
 from timeManager import TimeManager
 from animationManager import AnimationManager
 from colour import Colour
+import numpy as np
 
 g = 9.81
 
-# 0 is upwards. A clockwise rotation leads to +90 horizontally right.
-# +270 is horizontally left.
-startingPoleAngleInRad = 360 / 180 * pi
-childPoles = Pole(0.2, 5 / 180 * pi, 0.15, 0.005,
-                  Colour.blue, Pole(0.2, 15 / 180 * pi, 0.10, 0.005, Colour.purple, None),)
-childPoles = None
+startingPoleAngleInRad = np.pi/2 + np.pi/4
 
 cart = Cart(0.5, 0.05, 0, -0.8, 0.8,
-            Colour.red, DCMotor(0.05, 0.5, 0.05, 0.01, 0.05, Colour.black),
-            Pole(0.2, startingPoleAngleInRad, 0.2, 0.005, Colour.green, childPoles,),)
+            Colour.red, DCMotor(0.065, 0.5, 0.01, 0.001, 0.05, Colour.black),
+            Pole(0.2, startingPoleAngleInRad, 0.2, 0.005, Colour.green))
 
 timeManager = TimeManager()
 am = AnimationManager()
@@ -34,7 +30,9 @@ while True:
   am.refresh()
 
   dt = 0.001
-  cart.update(dt, 12 * cos(i * dt * 2), g)
+  va = 0
+  # va = 12 * cos(i * dt * 2)
+  cart.update(dt, va, g)
 
   xCartPix = am.toPixels(cart.x())
   
@@ -57,16 +55,18 @@ while True:
   #     ],
   # )
 
-  # cartX = cart.x() + 10/500
-  # cartY = 0
-  # for pole in cart:
-  #     x1 = cartX + (pole.l * sin(pole.angle()))
-  #     y1 = cartY + (-pole.l * cos(pole.angle()))
-      
-  #     am.drawLine(pole.color, (cartX, cartY), (x1, y1))
-  #     x0 = x1
-  #     y0 = y1
+  x0Pole = xCartPix + 10
+  y0Pole = 0
+  pole = cart.pole
+  x1Pole = x0Pole + am.toPixels((pole.l * sin(pole.angle())))
+  y1Pole = y0Pole + am.toPixels((-pole.l * cos(pole.angle())))
+  am.drawLine(pole.color, (x0Pole, y0Pole), (x1Pole, y1Pole))
 
+  # print(f"({x0Pole}, {y0Pole}), ({x1Pole}, {y1Pole})")
+  # print(f"{cart.pole.angle()}, {cart.pole.angular_velocity()}")
+
+  # if (abs(cart.pole.angular_velocity()) > 1000):
+  #   exit()
   # texts = [
   #     f"Time: {round(i*dt,2)} s",
   #     f"",
@@ -87,7 +87,6 @@ while True:
   #         text, (0, (text_rect.height) * k, text_rect.width, text_rect.height)
   #     )
 
-
-
   am.update()
+  # pygame.time.delay(50)
   i += 1

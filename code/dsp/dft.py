@@ -22,5 +22,12 @@ class DFT():
 
     return np.array(X)
 
+  def getAmplitudeOfFreqsVectorised(self):
+    n = np.arange(self.N)
+    k = n.reshape((self.N, 1))
+    e = np.exp(-2j * np.pi * k * n/self.N)
+
+    return np.dot(e, self.x)
+  
   def getFreqs(self):
     return list(range(0, self.N))

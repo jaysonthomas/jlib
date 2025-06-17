@@ -15,13 +15,12 @@ class AnimationManager:
     self.screen.fill(self.colour.gray)
 
   def drawLine(self, colour, A, G):
-    A = (self.toPixels(A[0]), self.toPixels(A[1]))
-    G = (self.toPixels(G[0]), self.toPixels(G[1]))
+    A = self.toScreenPos(A[0], A[1])
+    G = self.toScreenPos(G[0], G[1])
     pygame.draw.line(self.screen, colour, A, G, 10)
 
   def drawRect(self, colour, xTopLeftPix=0, yTopLeftPix=0, width=10, height=10):
     x_pix, y_pix = self.toScreenPos(xTopLeftPix, yTopLeftPix)
-    print(f"{x_pix}, {y_pix}")
     pygame.draw.rect(self.screen, colour, (x_pix, y_pix, width, height))
 
   def hasExitSignalBeenReceived(self):
@@ -34,7 +33,7 @@ class AnimationManager:
     self.screen.fill(self.colour.gray)
 
   def toScreenPos(self, x_pix, y_pix):
-    return x_pix + (self.width/2), y_pix + (self.height/2) 
+    return x_pix + (self.width/2), -y_pix + (self.height/2) 
 
   def toPixels(self, input_m: float):
     '''

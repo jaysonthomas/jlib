@@ -8,7 +8,7 @@ timing = Timing(0, 5, 60)
 
 # State
 pendulum = Pendulum()
-state0 = np.array([np.deg2rad(120), 0])
+state0 = np.array([np.deg2rad(30), 0])
 rk = RK4(pendulum.ode, timing, state0)
 
 # Animation

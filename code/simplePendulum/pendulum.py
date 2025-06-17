@@ -16,6 +16,3 @@ class Pendulum():
     It returns thetaDot and thetaDotDot.
     '''
     return np.array((y[1], -self.g*np.sin(y[0])/self.l))
-  
-  def getStateInDeg(self):
-    return np.rad2deg(self.theta), np.rad2deg(self.thetaDot)

@@ -52,16 +52,18 @@ class Animator:
       return self.pTheta, self.pThetaDot, self.pPhaseCurve, self.pPhasePoint, self.pPendString, self.pPendBob,
   
     state, t = self.rk.step(i)                  # Currently, returns the state at i+1
-    # print(f"{i}, {np.rad2deg(state)}")
     self.stateInDeg.append(np.rad2deg(state).tolist())
     self.t.append(t)
+
+    print(f"State in deg:\n{self.stateInDeg}")
+    print(f"\nIteration index:{i}\n{self.stateInDeg[:i+1][0]}")
 
     stateInDeg = np.array(self.stateInDeg)
     self.pTheta.set_data(self.t[:i+2], stateInDeg[:i+2, 0])
     self.pThetaDot.set_data(self.t[:i+2], stateInDeg[:i+2, 1])
 
     self.pPhaseCurve.set_data(stateInDeg[:i+2, 0], stateInDeg[:i+2, 1])
-    self.pPhasePoint.set_data((self.stateInDeg[i+1][0], self.stateInDeg[i+1][1]))
+    self.pPhasePoint.set_data((stateInDeg[i:i+1, 0], stateInDeg[i:i+1, 1]))
 
     x, y = self.pendulum.getPos(self.rk.y[i+1][0])
     self.pPendString.set_data([0, x], [0, y])
