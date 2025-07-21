@@ -1,8 +1,7 @@
 import numpy as np
 import math
 
-
-class CoaxialCopter:
+class CoaxialDrone:
   '''
   k_f - Thrust coefficient
   k_m - Angular torque coefficient
@@ -10,10 +9,10 @@ class CoaxialCopter:
   i_z - Moment of inertia about the z-axis
   '''
   def __init__(self, k_f=0.1,  k_m=0.1,
-                m=0.5, i_z=0.2):
+                m=0.5, i_z=0.2, massErr=1):
     self.k_f = k_f
     self.k_m = k_m
-    self.m = m
+    self.m = m * massErr
     self.i_z = i_z
 
     self.omega_1 = 0.0
@@ -22,49 +21,37 @@ class CoaxialCopter:
 
     self.X = np.array([0.0, 0.0, 0.0, 0.0])
 
-  def z_dot_dot(self, m):
+  def z_ddot(self, m):
     '''
     Drone's mass is not used, so that the caller can provide a mass with a margin of error.
     '''
     f_1 = self.k_f * self.omega_1**2
     f_2 = self.k_f * self.omega_2**2
-    acceleration = self.g - (f_1 + f_2) / m
-    return acceleration
+    return self.g - (f_1 + f_2) / m
 
-  def psi_dot_dot(self):
+  def psi_ddot(self):
     cw_torque = self.k_m * self.omega_1**2
     ccw_torque = self.k_m * self.omega_2**2
-
     net_torque = ccw_torque - cw_torque
-    angular_acc = net_torque / self.i_z
+    return net_torque / self.i_z
 
-    return angular_acc
+  def set_rotors_angular_velocities(self, z_ddot, psi_ddot):
+    term_1 = self.m * (self.g - z_ddot) / (2 * self.k_f)
+    term_2 = self.i_z * psi_ddot / (2 * self.k_m)
 
-  def set_rotors_angular_velocities(self, linear_acc, angular_acc):
-    term_1 = self.m * (-linear_acc + self.g) / (2 * self.k_f)
-    term_2 = self.i_z * angular_acc / (2 * self.k_m)
+    self.omega_1 = 0.0
+    self.omega_2 = 0.0
 
     if (term_1 + term_2) > 0.0:
-        omega_1 = math.sqrt(term_1 + term_2)
-    else:
-        omega_1 = 0.0
+      self.omega_1 = math.sqrt(term_1 + term_2)
 
     if (term_1 - term_2) > 0.0:
-        omega_2 = -math.sqrt(term_1 - term_2)
-    else:
-        omega_2 = 0.0
-
-    self.omega_1 = omega_1
-    self.omega_2 = omega_2
+      self.omega_2 = -math.sqrt(term_1 - term_2)
 
     return self.omega_1, self.omega_2
 
   def advance_state(self, dt, actual_mass):
     X_dot = np.array(
-        [self.X[2], self.X[3], self.z_dot_dot(actual_mass), self.psi_dot_dot()]
+        [self.X[2], self.X[3], self.z_ddot(actual_mass), self.psi_ddot()]
     )
-
-    # Change in state will be
     self.X = self.X + X_dot * dt
-
-    return self.X
