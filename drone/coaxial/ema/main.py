@@ -7,7 +7,7 @@ from .Plotter import Plotter
 total_time = 10.0   # Total Flight time 
 dt = 0.01           # A time interval between measurements 
 
-t, z_path, z_dot_path, z_ddot_path =  pathGenerator.getDesiredTraj(total_time, dt,'constant' )
+t, x_d, x_dot_d, x_ddot_d =  pathGenerator.getDesiredTraj(total_time, dt,'constant' )
 
 
 # Now let's compare three different estimates: 
@@ -21,7 +21,7 @@ t, z_path, z_dot_path, z_ddot_path =  pathGenerator.getDesiredTraj(total_time, d
 # First, let's see what the path looks like for the perfect state estimate, and compare that to an estimate which uses the measured values directly.
 
 logger = Logger()
-sim = Simulation(z_path, z_dot_path, z_ddot_path, t, dt, 35, 10, 10, 0.7)
+sim = Simulation(x_d, x_dot_d, x_ddot_d, t, dt, 35, 10, 10, 0.7)
 
                               #  k_p=(5.0, 35.0, 1),
                               #  k_d=(0.0, 10, 0.5), 
@@ -31,18 +31,18 @@ sim = Simulation(z_path, z_dot_path, z_ddot_path, t, dt, 35, 10, 10, 0.7)
 
 # In this section, we will use the estimated value of the altitude based on the averaging to control the drone instead of relying only on the last measurement value.
 
-z = [None] * 3
-zEstimate = [None] * 3
+y = [None] * 3
+x_hat = [None] * 3
 x = [None] * 3
 
-for i in range(0, len(z)):
+for i in range(0, len(y)):
   sim.reset(35, 10, 10, 0.7)
   sim.run(i, logger)
-  z[i], zEstimate[i], x[i] = logger.get()
+  y[i], x_hat[i], x[i] = logger.get()
   logger.reset()
 
 plotter = Plotter()
-plotter.plot(t, z, zEstimate, x)
+plotter.plot(t, y, x_hat, x, x_d)
 
 # # Questions:
 # ---

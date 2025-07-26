@@ -21,13 +21,10 @@ class CoaxialDrone:
 
     self.X = np.array([0.0, 0.0, 0.0, 0.0])
 
-  def z_ddot(self, m):
-    '''
-    Drone's mass is not used, so that the caller can provide a mass with a margin of error.
-    '''
+  def z_ddot(self):
     f_1 = self.k_f * self.omega_1**2
     f_2 = self.k_f * self.omega_2**2
-    return self.g - (f_1 + f_2) / m
+    return self.g - (f_1 + f_2) / self.m
 
   def psi_ddot(self):
     cw_torque = self.k_m * self.omega_1**2
@@ -50,8 +47,6 @@ class CoaxialDrone:
 
     return self.omega_1, self.omega_2
 
-  def advance_state(self, dt, actual_mass):
-    X_dot = np.array(
-        [self.X[2], self.X[3], self.z_ddot(actual_mass), self.psi_ddot()]
-    )
-    self.X = self.X + X_dot * dt
+  def advance_state(self, dt):
+    X_dot = np.array([self.X[2], self.X[3], self.z_ddot(), self.psi_ddot()])
+    self.X = self.X + X_dot * dt    

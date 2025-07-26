@@ -5,7 +5,6 @@ import math
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
 
-
 class DronewithPIDKF(CoaxialCopter,PIDController_with_ff):
 
     def __init__(self,

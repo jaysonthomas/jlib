@@ -27,20 +27,27 @@ class Simulation():
     1 - Use measured values (ideal with some gaussian noise).
     2 - Use an estimation of the measured values.
     '''
+    y_t = 0.0
+    x_hat_t = 0.0
+    u = 0.0
     for i in range(1, self.z_target.shape[0] - 1):
-      z_t = self.drone.X[0]
+      # Advance state
+      self.drone.set_rotors_angular_velocities(u, 0.0)
+      self.drone.advance_state(self.dt)
+
+      # Measure/Estimate
+      y_t = self.drone.X[0]
       if controllerInputOption != 0:
-        z_t = self.sensor.measure(self.drone.X[0])
-      controllerInput = z_t
+        y_t = self.sensor.measure(self.drone.X[0])
 
-      zEstimate = z_t
+      x_hat_t = y_t
       if controllerInputOption == 2:
-        zEstimate = self.estimator.estimate(z_t)
+        x_hat_t = self.estimator.estimate(y_t)
+      
+      # Log
+      logger.update(y_t, x_hat_t, self.drone.X)
 
-      u_bar = self.controller.control(self.z_target[i], zEstimate, 
-                                      self.z_dot_target[i], self.drone.X[2],
-                                      self.z_ddot_target[i], self.dt)
-
-      self.drone.set_rotors_angular_velocities(u_bar, 0.0)
-      self.drone.advance_state(self.dt, self.drone.m)
-      logger.update(z_t, zEstimate, self.drone.X)
+      # Control
+      u = self.controller.control(self.z_target[i], x_hat_t, 
+                                  self.z_dot_target[i], self.drone.X[2],
+                                  self.z_ddot_target[i], self.dt)
