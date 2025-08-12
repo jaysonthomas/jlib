@@ -5,7 +5,7 @@ from ipywidgets import interactive
 from scipy.stats import multivariate_normal
 
 from .KF import KF
-from .StateSpaceDisplay import state_space_display, state_space_display_updated
+from .StateSpaceDisplay import state_space_display
 
 pylab.rcParams['figure.figsize'] = 10, 10 
 
@@ -30,19 +30,14 @@ kf = KF(noise, noise, noise, dt)
 kf.resetState(mu_0, sigma_0)
 
 kf.predict(u)
-print(f"New state estimate\nmu_bar = {kf.mu_bar}, sigma_bar = {kf.sigma_bar}")
-
-# Plot the initial and predicted estimates.
-state_space_display(z, v, mu_0, sigma_0, kf.mu_bar, kf.sigma_bar)
+# print(f"Predicted state estimate\nmu_bar = {kf.mu_bar}, sigma_bar = {kf.sigma_bar}")
 
 # Introduce a single measurement close to the predicted position. Update the drone's estimated position.
 measurement = 1.01
-
 kf.update(measurement)
-print(f"State belief after the measurement update:\nMean belief = {kf.mu}, covariance belief = {kf.sigma}")
+# print(f"State belief after the measurement update:\nMean belief = {kf.mu}, covariance belief = {kf.sigma}")
 
-# Plotting the initial, predicted, and updated estimates.
-state_space_display_updated(z, v, mu_0, sigma_0, kf.mu_bar, kf.sigma_bar, kf.mu, kf.sigma)
+state_space_display(mu_0, sigma_0, kf.mu_bar, kf.sigma_bar, kf.mu, kf.sigma)
 
 # Please note that if you have peformed all operations correctly the updated state should be better defined than the initial state and the predicted state (the ovals should occupy a smaller area).
 
